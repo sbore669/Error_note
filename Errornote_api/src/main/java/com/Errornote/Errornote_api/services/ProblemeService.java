@@ -1,6 +1,7 @@
 package com.Errornote.Errornote_api.services;
 
 import com.Errornote.Errornote_api.modele.Probleme;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,4 +11,5 @@ public interface ProblemeService {
     Optional<Probleme> modifier(Long id_probleme, Probleme probleme);
     String supprimer(Long id_probleme);
     List<Probleme> lire();
+    Object recherche(String mot_cle);
 }

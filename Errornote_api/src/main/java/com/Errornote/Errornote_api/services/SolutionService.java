@@ -1,8 +1,7 @@
 package com.Errornote.Errornote_api.services;
 
-import com.Errornote.Errornote_api.modele.Probleme;
-import com.Errornote.Errornote_api.modele.Profil;
 import com.Errornote.Errornote_api.modele.Solution;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;

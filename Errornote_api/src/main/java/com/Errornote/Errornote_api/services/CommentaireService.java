@@ -1,7 +1,7 @@
 package com.Errornote.Errornote_api.services;
-
-
 import com.Errornote.Errornote_api.modele.Commentaire;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 

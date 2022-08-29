@@ -4,10 +4,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -20,4 +17,8 @@ public class Etat {
     private Long id_etat;
     private String status;
 
+
+    @ManyToOne
+    @JoinColumn(name = "probleme_id_probleme")
+    private Probleme probleme;
 }

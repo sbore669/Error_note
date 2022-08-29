@@ -42,4 +42,18 @@ public class ProblemServImpl implements ProblemeService {
     public List<Probleme> lire() {
         return problemeRepo.findAll();
     }
+
+    @Override
+    public Object recherche(String mot_cle) {
+        if (mot_cle !=null){
+            List<Probleme> retrouve = problemeRepo.findAll(mot_cle);
+            System.out.println(retrouve);
+            if (retrouve.size() != 0) {
+                return retrouve;
+            } else {
+                return "Desole ce mot est introuvable";
+            }
+        }
+        return problemeRepo.findAll();
+    }
 }
