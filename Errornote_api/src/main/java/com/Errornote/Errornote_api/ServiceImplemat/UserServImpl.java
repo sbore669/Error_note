@@ -1,6 +1,7 @@
 package com.Errornote.Errornote_api.ServiceImplemat;
 
 import com.Errornote.Errornote_api.modele.User;
+import com.Errornote.Errornote_api.repository.ProfileRepository;
 import com.Errornote.Errornote_api.repository.UserRepo;
 import com.Errornote.Errornote_api.services.UserService;
 import lombok.AllArgsConstructor;
@@ -13,8 +14,9 @@ import java.util.Optional;
 @AllArgsConstructor
 public class UserServImpl implements UserService {
     private final UserRepo userRepo;
+
     @Override
-    public User ajouter(User user) {
+    public User CreerUser(User user) {
         return userRepo.save(user);
     }
 
@@ -42,5 +44,13 @@ public class UserServImpl implements UserService {
     @Override
     public List<User> lire() {
         return userRepo.findAll();
+    }
+
+    @Override
+    public boolean Seconnecter(String pseudo, String password) {
+        if ((userRepo.findByPseudo(pseudo) == null) || userRepo.findByPassword(password) == null)
+        return false ;
+        else
+            return true;
     }
 }

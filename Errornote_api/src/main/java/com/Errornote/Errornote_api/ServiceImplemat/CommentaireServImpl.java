@@ -14,6 +14,7 @@ public class CommentaireServImpl implements CommentaireService {
     private final CommentaireRepo commentaireRepo;
     @Override
     public Commentaire ajouter(Commentaire commentaire) {
+
         return commentaireRepo.save(commentaire);
     }
 
@@ -22,7 +23,7 @@ public class CommentaireServImpl implements CommentaireService {
         return commentaireRepo.findById(id_commentaire)
                 .map(commentaire1 -> {
                     commentaire1.setCommentaire(commentaire.getCommentaire());
-                    return commentaireRepo.save(commentaire);
+                    return commentaireRepo.save(commentaire1);
                 }).orElseThrow(() -> new RuntimeException("Commentaire non trouvé"));
     }
 

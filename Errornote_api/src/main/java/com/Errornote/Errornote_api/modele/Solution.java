@@ -2,10 +2,7 @@ package com.Errornote.Errornote_api.modele;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -17,5 +14,10 @@ public class Solution {
     private String ressource;
     private String temps_consacre;
     private String methodologie_adopte;
+
+    @OneToOne
+    @JoinColumn(name = "probleme_id_probleme")
+    private Probleme probleme;
+
 
 }

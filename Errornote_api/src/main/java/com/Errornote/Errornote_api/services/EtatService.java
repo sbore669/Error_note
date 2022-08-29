@@ -1,6 +1,7 @@
 package com.Errornote.Errornote_api.services;
 
 import com.Errornote.Errornote_api.modele.Etat;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 

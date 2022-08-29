@@ -2,10 +2,7 @@ package com.Errornote.Errornote_api.modele;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -19,5 +16,12 @@ public class User {
     private String contact;
     private String pseudo;
     private String password;
+
+
+    @ManyToOne
+    @JoinColumn(name = "profile_id_profile")
+    private Profile profile;
+
+
 
 }

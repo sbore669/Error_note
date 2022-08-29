@@ -2,10 +2,7 @@ package com.Errornote.Errornote_api.modele;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -18,4 +15,8 @@ public class Probleme {
     private String description;
     private String tecno_concerne;
 
+
+    @OneToOne
+    @JoinColumn(name = "solution_id_solution")
+    private Solution solution;
 }
