@@ -10,6 +10,8 @@ import javax.persistence.Id;
 @Entity
 @Setter
 @Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Profile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

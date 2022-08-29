@@ -8,11 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-@AllArgsConstructor
 public class ProfileServiceImplemat implements ProfileService {
 
     @Autowired
-    final private ProfileRepository profileRepository;
+    ProfileRepository profileRepository;
     @Override
     public Profile ajouterProfil(Profile profile) {
         return profileRepository.save(profile);

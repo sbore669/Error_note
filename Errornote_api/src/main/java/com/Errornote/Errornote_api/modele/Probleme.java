@@ -16,7 +16,15 @@ public class Probleme {
     private String tecno_concerne;
 
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "etat_id_etat")
+    private Etat etat;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id_user")
+    private User user;
+
+    @OneToOne(mappedBy = "probleme")
     @JoinColumn(name = "solution_id_solution")
     private Solution solution;
 }

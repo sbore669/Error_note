@@ -1,7 +1,9 @@
 package com.Errornote.Errornote_api.controller;
 
+import com.Errornote.Errornote_api.modele.Etat;
 import com.Errornote.Errornote_api.modele.Probleme;
 import com.Errornote.Errornote_api.modele.Solution;
+import com.Errornote.Errornote_api.services.EtatService;
 import com.Errornote.Errornote_api.services.ProblemeService;
 import com.Errornote.Errornote_api.services.SolutionService;
 import io.swagger.annotations.Api;
@@ -20,9 +22,16 @@ public class ProblemeController {
 
     private ProblemeService problemeService;
     private SolutionService solutionService;
+    private EtatService etatService;
     @ApiOperation(value = "Permet de creer un probleme")
     @PostMapping("/add")
     public String ajouter(@RequestBody Probleme probleme, Solution solution) {
+        //Pour enregistrer l'etat en même temps que le problème
+        //enregistrement de l'etat dans la base de donnée
+        Etat etat= etatService.ajouter(probleme.getEtat());
+        //On écrase l'ancien état en le remplaçant par le nouveau
+        probleme.setEtat(etat);
+
         problemeService.ajouter(probleme);
         solutionService.ajouter(solution);
 

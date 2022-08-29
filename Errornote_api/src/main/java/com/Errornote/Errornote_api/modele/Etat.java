@@ -18,7 +18,7 @@ public class Etat {
     private String status;
 
 
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn(name = "probleme_id_probleme")
-    private Probleme probleme;
+    private Probleme probleme;*/
 }

@@ -7,15 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@AllArgsConstructor
 @RequestMapping("/profil")
 public class ProfileController {
     @Autowired
-    final ProfileService profileService;
+    ProfileService profileService;
 
     @PostMapping("/ajouter_profile")
-    public Profile ajouter(Profile profile) {
+    public Profile ajouter(@RequestBody  Profile profile) {
         return profileService.ajouterProfil(profile);
+
     }
 
     @DeleteMapping("/supprimer_profil")
