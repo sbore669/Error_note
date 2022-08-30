@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ProblemeService {
+    Probleme trouverproblemepartitre(String titre);
     Probleme ajouter(Probleme probleme);
     Optional<Probleme> modifier(Long id_probleme, Probleme probleme);
     String supprimer(Long id_probleme);

@@ -22,6 +22,7 @@ public class ProblemeController {
 
     private ProblemeService problemeService;
     private SolutionService solutionService;
+    //Appel de EtatService
     private EtatService etatService;
     @ApiOperation(value = "Permet de creer un probleme")
     @PostMapping("/add")

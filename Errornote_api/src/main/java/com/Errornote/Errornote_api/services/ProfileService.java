@@ -6,6 +6,6 @@ public interface ProfileService {
 
     Profile ajouterProfil(Profile profile);
     Profile modifierProfile(Long id, Profile profile);
-    Profile trouverProfilParLibelle(String libelle);
+    Profile trouverProfilParLibelle(Profile libelle);
     void suprrimerProil(Long id);
 }

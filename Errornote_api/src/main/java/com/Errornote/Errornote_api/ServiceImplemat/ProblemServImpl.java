@@ -16,6 +16,12 @@ import java.util.Optional;
 public class ProblemServImpl implements ProblemeService {
 
     private final ProblemeRepo problemeRepo;
+
+    @Override
+    public Probleme trouverproblemepartitre(String titre) {
+        return problemeRepo.findByTitre(titre);
+    }
+
     @Override
     public Probleme ajouter(Probleme probleme) {
         return problemeRepo.save(probleme);
@@ -25,8 +31,11 @@ public class ProblemServImpl implements ProblemeService {
     public Optional<Probleme> modifier(Long id_probleme, Probleme probleme) {
         return Optional.ofNullable(problemeRepo.findById(id_probleme)
                 .map(probleme1 -> {
+                    if(probleme.getDescription() !=null)
                     probleme1.setDescription(probleme.getDescription());
+                    if(probleme.getTitre() !=null)
                     probleme1.setTitre(probleme.getTitre());
+                    if(probleme.getTecno_concerne() !=null)
                     probleme1.setTecno_concerne(probleme.getTecno_concerne());
                     return problemeRepo.save(probleme);
                 }).orElseThrow(() -> new RuntimeException("Probleme modifier")));

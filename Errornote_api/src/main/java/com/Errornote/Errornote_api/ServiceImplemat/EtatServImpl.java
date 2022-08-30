@@ -20,6 +20,7 @@ public class EtatServImpl implements EtatService {
     public Etat modifier(Long id_etat) {
         return etatRepo.findById(id_etat)
                 .map(etat1 -> {
+
                     etat1.setStatus(etat1.getStatus());
                     return etatRepo.save(etat1);
                 }).orElseThrow(() -> new RuntimeException("Commentaire non trouvé"));

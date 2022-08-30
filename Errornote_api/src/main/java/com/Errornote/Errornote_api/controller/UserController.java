@@ -21,17 +21,17 @@ public class UserController {
     private final UserService userService;
 
     private final ProfileService profileService;
-    @ApiOperation(value = "Permet de creer une utilisateur")
-    @PostMapping("/creer_compte/{profil}")
-    public String CreerCompte(@RequestBody User user, @PathVariable("profil") String profil){
+    @ApiOperation(value = "Permet de creer un utilisateur")
+    @PostMapping("/creer_compte/{id_profil}")
+    public String CreerCompte(@RequestBody User user, @PathVariable("id_profil") Profile id_profil){
 
-        Profile profil1 = profileService.trouverProfilParLibelle(profil);
+        Profile profil1 = profileService.trouverProfilParLibelle(id_profil);
         if (userService.Seconnecter(user.getPseudo(), user.getPassword())) {
             return "CE COMPTE EXISTE DEJA";
         }
         else
         {
-            user.setProfile(profil1);
+            user.setProfile(id_profil);
             userService.CreerUser(user);
             return "COMPTE CREER AVEC SUCCES";
         }
@@ -42,7 +42,7 @@ public class UserController {
     public Optional<Optional<User>> modifier(@PathVariable Long id_user, @RequestBody User user) {
         return Optional.ofNullable(userService.modifier(id_user, user));
     }
-    @ApiOperation(value = "Permet de supprimer une utilisateur")
+    @ApiOperation(value = "Permet de supprimer un utilisateur")
     @DeleteMapping("/supp/{id_user}")
     public String supprimer(@PathVariable Long id_user) {
         userService.supprimer(id_user);

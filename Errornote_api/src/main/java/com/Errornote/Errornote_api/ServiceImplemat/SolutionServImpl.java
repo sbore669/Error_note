@@ -23,9 +23,14 @@ public class SolutionServImpl implements SolutionService {
     public Optional<Solution> modifier(Long id_solution, Solution solution) {
         return Optional.ofNullable(solutionRepo.findById(id_solution)
                 .map(solution1 -> {
+                    if(solution.getRessource() !=null)
                     solution1.setRessource(solution.getRessource());
-                    solution1.setTemps_consacre(solution.getTemps_consacre());
-                    solution1.setMethodologie_adopte(solution.getMethodologie_adopte());
+                    if(solution.getTemps_consacre() !=null)
+
+                        solution1.setTemps_consacre(solution.getTemps_consacre());
+                    if(solution.getMethodologie_adopte() !=null)
+
+                        solution1.setMethodologie_adopte(solution.getMethodologie_adopte());
                     return solutionRepo.save(solution);
                 }).orElseThrow(() -> new RuntimeException("Solution non trouve")));
     }

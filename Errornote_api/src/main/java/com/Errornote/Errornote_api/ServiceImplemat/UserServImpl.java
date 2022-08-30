@@ -24,10 +24,17 @@ public class UserServImpl implements UserService {
     public Optional<User> modifier(Long id_user, User user) {
         return Optional.ofNullable(userRepo.findById(id_user)
                 .map(user1 -> {
+                    if(user.getNom() !=null)
                     user1.setNom(user.getNom());
+                    if(user.getPrenom() !=null)
                     user1.setPrenom(user.getPrenom());
+                    if(user.getContact() !=null)
                     user1.setContact(user.getContact());
+                    if(user.getPseudo() !=null)
                     user1.setPseudo(user.getPseudo());
+                    if(user.getEmail() !=null)
+                    user1.setEmail(user.getEmail());
+                    if(user.getPassword() !=null)
                     user1.setPassword(user.getPassword());
                     return userRepo.save(user);
 
