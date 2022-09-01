@@ -1,6 +1,8 @@
 package com.Errornote.Errornote_api.ServiceImplemat;
 
+import com.Errornote.Errornote_api.modele.Probleme;
 import com.Errornote.Errornote_api.modele.Solution;
+import com.Errornote.Errornote_api.repository.ProblemeRepo;
 import com.Errornote.Errornote_api.repository.SolutionRepo;
 import com.Errornote.Errornote_api.services.SolutionService;
 import lombok.AllArgsConstructor;
@@ -14,6 +16,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class SolutionServImpl implements SolutionService {
     private final SolutionRepo solutionRepo;
+    private  final ProblemeRepo problemeRepo;
     @Override
     public Solution ajouter(Solution solution) {
         return solutionRepo.save(solution);
@@ -44,5 +47,10 @@ public class SolutionServImpl implements SolutionService {
     @Override
     public List<Solution> lire() {
         return solutionRepo.findAll();
+    }
+
+    @Override
+    public Solution TrouverSolutionParProbleme(Probleme probleme) {
+        return solutionRepo.findByProbleme(probleme);
     }
 }

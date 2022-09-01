@@ -25,12 +25,14 @@ public class ProblemeController {
     //Appel de EtatService
     private EtatService etatService;
     @ApiOperation(value = "Permet de creer un probleme")
-    @PostMapping("/add")
-    public String ajouter(@RequestBody Probleme probleme, Solution solution) {
+    @PostMapping("/add/")
+    public <etat> String ajouter(@RequestBody Probleme probleme, Solution solution) {
         //Pour enregistrer l'etat en même temps que le problème
-        //enregistrement de l'etat dans la base de donnée
-        Etat etat= etatService.ajouter(probleme.getEtat());
-        //On écrase l'ancien état en le remplaçant par le nouveau
+        //definition d'un nouvel etat
+        Etat etat= new Etat();
+        //changer l'id de etat en id initial 1
+        etat.setId_etat(1L);
+        // le nouveau
         probleme.setEtat(etat);
 
         problemeService.ajouter(probleme);

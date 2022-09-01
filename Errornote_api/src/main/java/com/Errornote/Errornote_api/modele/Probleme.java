@@ -1,5 +1,6 @@
 package com.Errornote.Errornote_api.modele;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -23,7 +24,7 @@ public class Probleme {
     @ManyToOne
     @JoinColumn(name = "user_id_user")
     private User user;
-
+    @JsonIgnore
     @OneToOne(mappedBy = "probleme")
     @JoinColumn(name = "solution_id_solution")
     private Solution solution;

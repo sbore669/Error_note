@@ -1,5 +1,6 @@
 package com.Errornote.Errornote_api.services;
 
+import com.Errornote.Errornote_api.modele.Probleme;
 import com.Errornote.Errornote_api.modele.Solution;
 import org.springframework.stereotype.Service;
 
@@ -11,4 +12,5 @@ public interface SolutionService {
     Optional<Solution> modifier(Long id_solution, Solution Solution);
     String supprimer(Long id_solution);
     List<Solution> lire();
+    Solution TrouverSolutionParProbleme(Probleme probleme);
 }
